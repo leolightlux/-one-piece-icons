@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101010">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="app-icon.png">
+<title>One Piece Icons</title>
+<style>
+:root{--bg:#090909;--card:#171411;--paper:#ead7aa;--red:#c73a2b;--gold:#e5ae3a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#1d1812,#070707 55%);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+main{max-width:520px;margin:auto;padding:24px 18px 100px}.logo{font-weight:900;letter-spacing:.08em;font-size:26px}.sub{color:#aaa;margin-top:4px}
+.hero{margin-top:20px;padding:22px;border-radius:24px;background:linear-gradient(145deg,#123e63,#12100c);border:1px solid #3e3426;overflow:hidden}
+.hero h1{font-size:30px;margin:0 0 8px}.hero p{color:#ddd;line-height:1.4}
+button{font:inherit;border:0}.primary{width:100%;padding:15px;border-radius:16px;background:linear-gradient(90deg,#d94732,#a8201d);color:white;font-weight:800}
+h2{margin:26px 0 12px}.themes{display:grid;gap:12px}.theme{padding:16px;border-radius:19px;background:#171411;border:1px solid #33291c;text-align:left;color:#fff}.theme.selected{border-color:#e5ae3a;box-shadow:0 0 0 1px #e5ae3a inset}.theme b{display:block;font-size:17px}.theme span{color:#aaa;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.ico{text-align:center;color:#ddd;font-size:11px}.tile{aspect-ratio:1;border-radius:17px;display:grid;place-items:center;font-size:28px;background:linear-gradient(145deg,#3d8ec3,#162d3c);border:1px solid #536a70}.ico:nth-child(4n+2) .tile{background:linear-gradient(145deg,#b9833b,#4b2d13)}.ico:nth-child(4n+3) .tile{background:linear-gradient(145deg,#b63b32,#401515)}.ico:nth-child(4n+4) .tile{background:linear-gradient(145deg,#2e6f55,#102e22)}
+.nav{position:fixed;bottom:0;left:0;right:0;padding:10px 18px calc(10px + env(safe-area-inset-bottom));background:rgba(10,10,10,.9);backdrop-filter:blur(18px);display:flex;justify-content:space-around;border-top:1px solid #292929}.nav button{background:none;color:#aaa}.nav button.active{color:#f0b743}.screen{display:none}.screen.active{display:block}
+.note{margin-top:14px;padding:13px;border-radius:14px;background:#211c15;color:#cfc5b2;font-size:13px;line-height:1.4}
+</style>
+</head>
+<body>
+<main>
+<header><div class="logo">ONE PIECE ICONS</div><div class="sub">Personalizza il tuo iPhone</div></header>
+
+<section id="home" class="screen active">
+<div class="hero"><h1>🏴‍☠️ Cappello di Paglia</h1><p>Il primo tema per trasformare la tua Home in una piccola Grand Line.</p><button class="primary" onclick="go('themes')">Esplora il tema</button></div>
+<h2>Il tuo set</h2><div class="grid" id="homeGrid"></div>
+<div class="note">Questo prototipo prepara la personalizzazione. iOS richiede l'autorizzazione dell'utente per i collegamenti/icone della Home.</div>
+</section>
+
+<section id="themes" class="screen">
+<h2>Scegli il tuo tema</h2><div class="themes">
+<button class="theme selected"><b>👒 Cappello di Paglia</b><span>L'avventura inizia!</span></button>
+<button class="theme"><b>⚔️ Wano</b><span>Tradizione e forza</span></button>
+<button class="theme"><b>⚓ Marine</b><span>Giustizia e ordine</span></button>
+<button class="theme"><b>🍇 Frutti del Diavolo</b><span>Poteri leggendari</span></button>
+<button class="theme"><b>👑 Imperatori</b><span>Il Nuovo Mondo</span></button>
+</div>
+<button class="primary" style="margin-top:18px" onclick="go('icons')">Anteprima icone</button>
+</section>
+
+<section id="icons" class="screen">
+<h2>Icone — Cappello di Paglia</h2><div class="grid" id="iconGrid"></div>
+<button class="primary" style="margin-top:20px" onclick="alert('Nel prossimo step collegheremo qui il flusso di installazione delle icone su iPhone.')">Prepara il tema</button>
+</section>
+
+<section id="wallpapers" class="screen">
+<h2>Sfondi coordinati</h2>
+<div class="hero"><h1>🌊 Grand Line</h1><p>Sfondi verticali pensati per la Home dell'iPhone 14 Pro Max.</p></div>
+<div class="note">Puoi sostituire questa sezione con gli sfondi finali ad alta risoluzione del tema.</div>
+</section>
+</main>
+<nav class="nav">
+<button id="n-home" class="active" onclick="go('home')">⌂<br><small>Home</small></button>
+<button id="n-themes" onclick="go('themes')">☠<br><small>Temi</small></button>
+<button id="n-icons" onclick="go('icons')">▦<br><small>Icone</small></button>
+<button id="n-wallpapers" onclick="go('wallpapers')">▧<br><small>Sfondi</small></button>
+</nav>
+<script>
+const icons=[["Safari","⛵"],["Foto","👒"],["Fotocamera","📷"],["Messaggi","🐌"],["WhatsApp","⚓"],["Instagram","🔥"],["TikTok","🎵"],["YouTube","☠"],["Spotify","💀"],["Mail","✉"],["Mappe","🧭"],["App Store","⚔"],["Impostazioni","⚙"],["Note","🗺"],["Orologio","◷"],["Calcolatrice","🧰"]];
+function grid(id){document.getElementById(id).innerHTML=icons.map(x=>`<div class="ico"><div class="tile">${x[1]}</div><div>${x[0]}</div></div>`).join("")}
+function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));document.getElementById("n-"+id)?.classList.add("active");scrollTo(0,0)}
+grid("homeGrid");grid("iconGrid");
+document.querySelectorAll(".theme").forEach(b=>b.onclick=()=>{document.querySelectorAll(".theme").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")});
+</script>
+</body>
+</html>
